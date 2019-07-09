@@ -1,14 +1,16 @@
-package com.notlttl;
+package d4.notlttl;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Notlttl extends ApplicationAdapter {
+public class Notlttl extends Game {
 	SpriteBatch batch;
 	Texture img;
+	BitmapFont font;
 	
 	@Override
 	public void create () {
@@ -18,10 +20,11 @@ public class Notlttl extends ApplicationAdapter {
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
 		batch.begin();
-		batch.draw(img, 0, 0);
+			batch.draw(img, 0, 0);
 		batch.end();
 	}
 	
