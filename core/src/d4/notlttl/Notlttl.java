@@ -6,8 +6,8 @@ import d4.notlttl.screen.MainScreen;
 
 public class Notlttl extends Game {
 
-	public static final int GAME_WIDTH = 1280;
-	public static final int GAME_HEIGHT = 720;
+	public static final int GAME_WIDTH = 3840;
+	public static final int GAME_HEIGHT = 2160;
 	private MainScreen mainScreen;
 	
 	@Override

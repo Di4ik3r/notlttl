@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
-import d4.notlttl.screen.MainScreen;
+import d4.notlttl.Notlttl;
 
 public class UIMain {
 
@@ -21,27 +21,28 @@ public class UIMain {
 	private Skin skin;
 	private BitmapFont font;
 
-	private Label labelX, labelY;
+	private Label labelX, labelY, labelFPS, labelLength;
 
 	public UIMain() {
 		this.stage = new Stage(new StretchViewport(1366, 768));
 		Gdx.input.setInputProcessor(stage);
 
 		this.skin = new Skin(Gdx.files.internal("skin.json"));
-		font = new BitmapFont(Gdx.files.internal("font.fnt"));
+		this.font = new BitmapFont(Gdx.files.internal("font.fnt"));
 
-		labelX = createLabel("", 0.5f, new Vector2(0f, 30f));
-		labelY = createLabel("", 0.5f, new Vector2(0f, 70f));
+		this.labelX = createLabel("", 0.5f, new Vector2(0f, 30f));
+		this.labelY = createLabel("", 0.5f, new Vector2(0f, 70f));
+		this.labelFPS = createLabel("", 0.5f, new Vector2(Gdx.graphics.getWidth() + 15f, Gdx.graphics.getHeight() + 10f));
+		this.labelLength = createLabel("", 0.5f, new Vector2(200f, 30f));
 	}
 
 	public void draw() {
-		stage.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		this.stage.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-		stage.act();
-		stage.draw();
-
-//		labelX.setText(Gdx.input.getX());
-//		labelY.setText(Gdx.input.getY());
+		this.stage.act();
+		this.stage.draw();
+		
+		this.labelFPS.setText(Gdx.graphics.getFramesPerSecond());
 	}
 
 	public void dispose() {
@@ -89,9 +90,10 @@ public class UIMain {
 		return btn;
 	}
 
-	public void sendCoord(Vector3 vector) {
-		labelX.setText(Float.toString(vector.x));
-		labelY.setText(Float.toString(vector.y));
+	public void sendInfo(Vector3 vector, float length) {
+		this.labelX.setText(Float.toString(vector.x));
+		this.labelY.setText(Float.toString(vector.y));
+		this.labelLength.setText("Length: " + Float.toString(length));
 
 	}
 }
