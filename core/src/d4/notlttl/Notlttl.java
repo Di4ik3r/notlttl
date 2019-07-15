@@ -15,6 +15,7 @@ public class Notlttl extends Game {
 		this.mainScreen = new MainScreen();
 		
 		this.setScreen(mainScreen);
+		//kek
 	}
 
 	@Override
